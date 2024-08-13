@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log User</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <% if (!user) {%> <%- include("./partials/flasherrors.ejs") %>
+    <h1>Log In</h1>
+    <form action="/login" method="post">
+      <label for="username">Username:</label>
+      <input type="username" id="username" name="username" required />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+      <button type="submit">Submit</button>
+    </form>
+    <a href="/">Return to the homepage</a>
+    <% } else { %>
+    <h1>You're already logged in.</h1>
+    <a href="/">Return to the homepage</a>
+    <%}%>
+  </body>
+</html>

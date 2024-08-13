@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🍜 Noodle Drive</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <h1>🍜 Noodle Drive</h1>
+    <% if(!user) {%>
+    <h2><a href="/register">Register</a> or <a href="/login">Log in</a> and start uploading your files now!</h2>
+    <%} else { %>
+    <h1>Welcome back <%= user.username %></h1>
+    <%}%>
+  </body>
+</html>
