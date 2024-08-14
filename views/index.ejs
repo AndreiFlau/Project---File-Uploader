@@ -12,11 +12,10 @@
     <h2><a href="/register">Register</a> or <a href="/login">Log in</a> and start uploading your files now!</h2>
     <%} else { %>
     <h1>Welcome back <%= user.username %></h1>
-    <h3>Upload your files <a href="/upload">here</a>!</h3>
     <h1>SHOW FOLDERS INSTEAD OF FILES HERE!</h1>
     <% if(folders) folders.forEach(function (folder){%>
-    <a href="/<%= folder.name %>">Folder</a>
-    <h1><%= folder.name %></h1>
+    <h1><a href="/<%= folder.name %>"><%= folder.name %></a></h1>
     <% }) %> <% } %>
+    <p>Create a folder <a href="/createfolder">here</a>.</p>
   </body>
 </html>

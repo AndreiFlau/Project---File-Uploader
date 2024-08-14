@@ -1,9 +1,10 @@
 const { Router } = require("express");
 const { getFileQuery } = require("../db/queries");
-const fileInfoRouter = Router();
+const fileInfoRouter = Router({ mergeParams: true });
 
 fileInfoRouter.get("/", async (req, res) => {
-  const file = await getFileQuery(req.user.id, req.params.id);
+  const id = Number(req.params.id);
+  const file = await getFileQuery(req.user.id, id);
   res.render("fileinfo", { user: req.user, file: file, filesize: "1TB" });
 });
 

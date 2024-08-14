@@ -6,7 +6,8 @@
     <title>Folder</title>
   </head>
   <body>
-    <% if(files) { %>
+    <% if(folderName && files && files.length > 0) { %>
+    <h1><%= folderName %></h1>
     <h1>Your uploaded files:</h1>
     <% files.forEach(function(file) { %>
     <div>
@@ -15,8 +16,10 @@
       <p>More info: <a href="/fileinfo/<%= file.id %>">here</a></p>
     </div>
     <%})%> <%} else {%>
-    <h1>There are no files here. Start uploading them<a href="/upload">here</a>!</h1>
+    <h1>There are no files here!</h1>
     <!-- <h1>This folder doesn't exist. Create one to store your files <a href="/createfolder">here</a>.</h1> -->
     <%}%>
+    <h3>Upload your files <a href="/<%= folderName %>/upload">here</a>!</h3>
+    <a href="/">Return to the homepage</a>
   </body>
 </html>

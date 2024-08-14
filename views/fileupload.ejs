@@ -6,17 +6,17 @@
     <title>File Upload</title>
   </head>
   <body>
-    <h1>Upload your files!</h1>
+    <h1>Upload your files to <%= folderName %>!</h1>
     <% if(success) { %>
     <h3><%= success %></h3>
     <% } else if(error) {%>
     <h3>Oops, an error happened while trying to upload your file: <%= error %></h3>
     <%}%>
-    <form action="/upload" method="post" enctype="multipart/form-data">
+    <form action="/<%= folderName %>/upload" method="post" enctype="multipart/form-data">
       <label for="uploadfile">Your file:</label>
       <input type="file" id="uploadfile" name="uploadfile" multiple />
       <button type="submit">Upload</button>
     </form>
   </body>
-  <a href="/">Return to the homepage</a>
+  <a href="/<%= folderName %>">Return to parent folder.</a>
 </html>

@@ -2,7 +2,7 @@ const { Router } = require("express");
 const { uploadGet, uploadPost } = require("../controllers/uploadController");
 const multer = require("multer");
 const path = require("path");
-const uploadRouter = Router();
+const uploadRouter = Router({ mergeParams: true });
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

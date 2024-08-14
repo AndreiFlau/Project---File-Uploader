@@ -10,6 +10,8 @@ const auth = require("./middleware/auth");
 const loginRouter = require("./routes/loginRouter");
 const uploadRouter = require("./routes/uploadRouter");
 const fileInfoRouter = require("./routes/fileInfoRouter");
+const createFolderRouter = require("./routes/createFolderRouter");
+const folderRouter = require("./routes/folderRouter");
 const app = express();
 require("dotenv").config();
 
@@ -39,7 +41,9 @@ auth(app);
 app.use("/", indexRouter);
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
-app.use("/upload", uploadRouter);
+app.use("/:foldername/upload", uploadRouter);
+app.use("/createfolder", createFolderRouter);
+app.use("/:foldername", folderRouter);
 app.use("/fileinfo/:id", fileInfoRouter);
 
 const PORT = process.env.PORT;

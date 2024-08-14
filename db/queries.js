@@ -12,11 +12,12 @@ async function registerUserQuery(email, username, password) {
   });
 }
 
-async function uploadFileQuery(filename, userId) {
+async function uploadFileQuery(filename, userId, folderId) {
   await prisma.file.create({
     data: {
       name: filename,
       userId: userId,
+      folderId: folderId,
     },
   });
 }
@@ -40,4 +41,54 @@ async function getFileQuery(userId, fileId) {
   return file;
 }
 
-module.exports = { registerUserQuery, uploadFileQuery, getFilesQuery, getFileQuery };
+async function getFoldersQuery(userId) {
+  const folders = await prisma.folder.findMany({
+    where: {
+      userId: userId,
+    },
+  });
+  return folders;
+}
+
+async function createFolderQuery(foldername, userId) {
+  await prisma.folder.create({
+    data: {
+      name: foldername,
+      userId: userId,
+    },
+  });
+}
+
+async function getFilesFromFolderQuery(foldername, userId) {
+  const files = await prisma.folder.findFirst({
+    where: {
+      name: foldername,
+      userId: userId,
+    },
+    include: {
+      files: true,
+    },
+  });
+  return files;
+}
+
+async function getFolderIdQuery(foldername, userId) {
+  const folderId = await prisma.folder.findFirst({
+    where: {
+      name: foldername,
+      userId: userId,
+    },
+  });
+  return folderId.id;
+}
+
+module.exports = {
+  registerUserQuery,
+  uploadFileQuery,
+  getFilesQuery,
+  getFileQuery,
+  getFoldersQuery,
+  createFolderQuery,
+  getFilesFromFolderQuery,
+  getFolderIdQuery,
+};
