@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Folder</title>
+  </head>
+  <body>
+    <% if(files) { %>
+    <h1>Your uploaded files:</h1>
+    <% files.forEach(function(file) { %>
+    <div>
+      <p><%= file.name %></p>
+      <img src="<%= file.path%>" alt="<%=file.name %>" />
+      <p>More info: <a href="/fileinfo/<%= file.id %>">here</a></p>
+    </div>
+    <%})%> <%} else {%>
+    <h1>There are no files here. Start uploading them<a href="/upload">here</a>!</h1>
+    <!-- <h1>This folder doesn't exist. Create one to store your files <a href="/createfolder">here</a>.</h1> -->
+    <%}%>
+  </body>
+</html>

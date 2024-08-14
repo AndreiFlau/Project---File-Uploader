@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload</title>
+  </head>
+  <body>
+    <h1>Upload your files!</h1>
+    <% if(success) { %>
+    <h3><%= success %></h3>
+    <% } else if(error) {%>
+    <h3>Oops, an error happened while trying to upload your file: <%= error %></h3>
+    <%}%>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="uploadfile">Your file:</label>
+      <input type="file" id="uploadfile" name="uploadfile" multiple />
+      <button type="submit">Upload</button>
+    </form>
+  </body>
+  <a href="/">Return to the homepage</a>
+</html>

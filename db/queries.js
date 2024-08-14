@@ -12,4 +12,32 @@ async function registerUserQuery(email, username, password) {
   });
 }
 
-module.exports = { registerUserQuery };
+async function uploadFileQuery(filename, userId) {
+  await prisma.file.create({
+    data: {
+      name: filename,
+      userId: userId,
+    },
+  });
+}
+
+async function getFilesQuery(userId) {
+  const files = await prisma.file.findMany({
+    where: {
+      userId: userId,
+    },
+  });
+  return files;
+}
+
+async function getFileQuery(userId, fileId) {
+  const file = await prisma.file.findFirst({
+    where: {
+      userId: userId,
+      id: fileId,
+    },
+  });
+  return file;
+}
+
+module.exports = { registerUserQuery, uploadFileQuery, getFilesQuery, getFileQuery };
