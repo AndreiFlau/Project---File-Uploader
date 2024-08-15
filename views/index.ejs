@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🍜 Noodle Drive</title>
+    <title>Noodle Drive</title>
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
@@ -12,9 +12,11 @@
     <h2><a href="/register">Register</a> or <a href="/login">Log in</a> and start uploading your files now!</h2>
     <%} else { %>
     <h1>Welcome back <%= user.username %></h1>
-    <% if(folders) folders.forEach(function (folder){%>
-    <h1><a href="/<%= folder.name %>"><%= folder.name %></a></h1>
-    <% }) %> <% } %>
-    <p>Create a folder <a href="/createfolder">here</a>.</p>
+    <div class="folders">
+      <% if(folders) folders.forEach(function (folder){%>
+      <h1><a href="/<%= folder.name %>"><%= folder.name %></a></h1>
+      <% }) %> <% } %>
+    </div>
+    <p>Create a folder <a href="/createfolder">here</a></p>
   </body>
 </html>

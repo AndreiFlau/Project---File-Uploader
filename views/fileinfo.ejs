@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>File info</title>
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <% if(user && file) {%>
     <h1><%= file.name %></h1>
-    <p><%= file.date %></p>
+    <p>Uploaded on: <%= file.date %></p>
     <p><%= filembsize %>MB</p>
     <% if(image) { %>
     <img src="<%= file.url%>" alt="<%=file.name %>" />
@@ -17,6 +18,6 @@
     <%} else {%>
     <h1>Oops, there's nothing to see here. Maybe try logging in or uploading a file first?</h1>
     <%}%>
-    <a href="/">Return to the homepage</a>
+    <a href="/<%= folderName %>">Return to parent folder.</a>
   </body>
 </html>

@@ -4,24 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Folder</title>
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <% if(folderName && files && files.length > 0) { %>
     <h1><%= folderName %></h1>
     <h1>Your uploaded files:</h1>
-    <% files.forEach(function(file) { %>
-    <div>
-      <p><%= file.name %></p>
-      <% if(file.isImage) { %>
-      <img src="<%= file.url%>" alt="<%=file.name %>" />
+    <div class="files">
+      <% files.forEach(function(file) { %>
+      <div class="file">
+        <p><%= file.name %></p>
+        <% if(file.isImage) { %>
+        <img src="<%= file.url%>" alt="<%=file.name %>" />
+        <%}%>
+        <p>More info: <a href="/<%= folderName %>/fileinfo/<%= file.id %>">here</a></p>
+      </div>
+      <%})%> <%} else {%>
+      <h1>There are no files here!</h1>
+      <!-- <h1>This folder doesn't exist. Create one to store your files <a href="/createfolder">here</a>.</h1> -->
       <%}%>
-      <p>More info: <a href="/fileinfo/<%= file.id %>">here</a></p>
     </div>
-    <%})%> <%} else {%>
-    <h1>There are no files here!</h1>
-    <!-- <h1>This folder doesn't exist. Create one to store your files <a href="/createfolder">here</a>.</h1> -->
-    <%}%>
-    <h3>Upload your files <a href="/<%= folderName %>/upload">here</a>!</h3>
+    <h3>Upload your files <a href="/<%= folderName %>/upload">here</a></h3>
     <a href="/">Return to the homepage</a>
   </body>
 </html>
