@@ -12,12 +12,15 @@ async function registerUserQuery(email, username, password) {
   });
 }
 
-async function uploadFileQuery(filename, userId, folderId) {
+async function uploadFileQuery(filename, userId, folderId, cloudinaryId, url, size) {
   await prisma.file.create({
     data: {
       name: filename,
       userId: userId,
       folderId: folderId,
+      cloudinaryId: cloudinaryId,
+      url: url,
+      size: size,
     },
   });
 }

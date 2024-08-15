@@ -12,7 +12,9 @@
     <% files.forEach(function(file) { %>
     <div>
       <p><%= file.name %></p>
-      <img src="<%= file.path%>" alt="<%=file.name %>" />
+      <% if(file.isImage) { %>
+      <img src="<%= file.url%>" alt="<%=file.name %>" />
+      <%}%>
       <p>More info: <a href="/fileinfo/<%= file.id %>">here</a></p>
     </div>
     <%})%> <%} else {%>

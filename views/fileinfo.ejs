@@ -9,8 +9,11 @@
     <% if(user && file) {%>
     <h1><%= file.name %></h1>
     <p><%= file.date %></p>
-    <p><%= filesize %></p>
-    <a href="/<%= file.path %>"><button>Download</button></a>
+    <p><%= filembsize %>MB</p>
+    <% if(image) { %>
+    <img src="<%= file.url%>" alt="<%=file.name %>" />
+    <%}%>
+    <a href="<%= file.url %>" download><button>Download</button></a>
     <%} else {%>
     <h1>Oops, there's nothing to see here. Maybe try logging in or uploading a file first?</h1>
     <%}%>

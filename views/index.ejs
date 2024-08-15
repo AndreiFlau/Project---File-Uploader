@@ -12,7 +12,6 @@
     <h2><a href="/register">Register</a> or <a href="/login">Log in</a> and start uploading your files now!</h2>
     <%} else { %>
     <h1>Welcome back <%= user.username %></h1>
-    <h1>SHOW FOLDERS INSTEAD OF FILES HERE!</h1>
     <% if(folders) folders.forEach(function (folder){%>
     <h1><a href="/<%= folder.name %>"><%= folder.name %></a></h1>
     <% }) %> <% } %>

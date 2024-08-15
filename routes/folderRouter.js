@@ -1,5 +1,7 @@
 const { Router } = require("express");
 const { getFilesFromFolderQuery } = require("../db/queries");
+const path = require("path");
+const isImage = require("../isImage");
 const folderRouter = Router({ mergeParams: true });
 
 folderRouter.get("/", async (req, res) => {
@@ -9,7 +11,16 @@ folderRouter.get("/", async (req, res) => {
 
   const filesInFolder = await getFilesFromFolderQuery(req.params.foldername, req.user.id);
   const folderName = filesInFolder.name;
-  const files = filesInFolder.files;
+  const files = filesInFolder.files.map((file) => {
+    const fileext = path.extname(file.url);
+    const image = isImage(fileext);
+    return {
+      id: file.id,
+      name: file.name,
+      url: file.url,
+      isImage: image,
+    };
+  });
   res.render("folder", { files: files, folderName: folderName });
 });
 

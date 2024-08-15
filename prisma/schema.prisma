@@ -36,15 +36,18 @@ model Folder {
   files  File[]
   userId Int
 
-  @@unique([name,  userId])
+  @@unique([name, userId])
 }
 
 model File {
-  id       Int      @id @default(autoincrement())
-  name     String
-  date     DateTime @default(now())
-  user     User     @relation(fields: [userId], references: [id])
-  userId   Int
-  folder   Folder?  @relation(fields: [folderId], references: [id])
-  folderId Int?
+  id           Int      @id @default(autoincrement())
+  name         String
+  date         DateTime @default(now())
+  user         User     @relation(fields: [userId], references: [id])
+  userId       Int
+  folder       Folder?  @relation(fields: [folderId], references: [id])
+  folderId     Int?
+  cloudinaryId String
+  url          String
+  size         BigInt?
 }
